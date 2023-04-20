@@ -1,3 +1,6 @@
+"""
+    Celery Configuration
+"""
 import os
 from celery import Celery
 
