@@ -76,6 +76,31 @@ This file contains the Django settings for the project. It defines various setti
 `large_csv_processor/tasks.py`
 This file contains the Celery task that processes the CSV file containing song play data. It reads the input file in chunks, groups the data by song and date, and calculates the total number of plays for each combination. The processed data is written to an output CSV file.
 
+`test.csv`
+Sample of an input csv file.
+
+```shell
+Song,Date,Number of Plays
+Umbrella,2020-01-02,200
+Umbrella,2020-01-01,100
+In The End,2020-01-01,500
+Umbrella,2020-01-01,50
+In The End,2020-01-01,1000
+Umbrella,2020-01-02,50
+In The End,2020-01-02,500
+```
+
+`processed_test.csv`
+Sample of the test.csv file after processing.
+
+```shell
+Song,Date,Total Number of Plays for Date
+In The End,2020-01-01,1500
+In The End,2020-01-02,500
+Umbrella,2020-01-01,150
+Umbrella,2020-01-02,250
+```
+
 ## Usage
 
 1. Uploading a CSV File
@@ -102,4 +127,5 @@ Wait for the file to be processed.
 Once the file has been processed, click the `Download file` button to download the file.
 
 ## Conclusion
+
 This project provides a scalable solution for processing large CSV files containing song play data. The Celery-based approach allows the processing to be distributed across multiple workers, which can significantly reduce the processing time for large files.
